@@ -5,6 +5,8 @@
  */
 package parqueadero;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author crist
@@ -14,7 +16,7 @@ public class objetoparqueadero
     float precioparqueaderocarros;
     float precioparqueaderomotos;
     float precioparqueaderobicicletas;
-    int maximacapacidadcarro;
+    int maximacapacidadcarro=9;
     int maximacapacidadmotos;
     int maximacapacidadbicicletas;
  
@@ -27,4 +29,46 @@ public class objetoparqueadero
     this.maximacapacidadmotos= par5;
     this.maximacapacidadbicicletas= par6;
  }
+ 
+
+    objetoparqueadero() {
+     
+    }
+     
+ public  int contador()
+ {
+     if ("Carro".equals(vehiculo.tipovehiculo)) {
+         maximacapacidadcarro--;
+         
+        
+     }
+     
+     return maximacapacidadcarro;
+     
+ }
+
+ static     ArrayList<Integer> tarifa=  new ArrayList<Integer>();
+  public void tarifa(String tipo)
+    {
+        
+        switch (tipo) {
+            case "Carro":
+                tarifa.add(75);
+                // System.out.println("tarifa "+ tarifa);
+                break;
+            case "Moto":
+                tarifa.add(20);
+                // System.out.println("tarifa "+ tarifa);
+                break;
+            case "Bicicleta":
+                tarifa.add(10);
+                //System.out.println("tarifa "+ tarifa);
+                break;
+            default:
+                break;
+        }
+        
+        
+    }
+ 
 }

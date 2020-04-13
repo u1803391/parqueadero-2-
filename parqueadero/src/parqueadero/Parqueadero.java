@@ -20,7 +20,7 @@ public class Parqueadero {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner entrada = new Scanner(System.in);
-        objetoparqueadero parqueadero= new objetoparqueadero(75,20,10,12,8,6);
+        objetoparqueadero parqueadero= new objetoparqueadero(75,20,10,12,8,6); 
         
         String tipo;
         
@@ -41,7 +41,7 @@ public class Parqueadero {
         }
         
         
-        
+       
         
         
         
