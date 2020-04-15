@@ -38,9 +38,9 @@ public class parking_ganancias extends javax.swing.JFrame {
          int n=obj.placa.size();
          for (int i = 0; i < n; i++) {
             
-            tabla.addRow(new Object[]{obj.listaVehiculos.get(i),obj.placa.get(i),"",obj1.tarifa.get(i)});
+            tabla.addRow(new Object[]{obj.listaVehiculos.get(i),obj.placa.get(i),"",obj1.tarifa.get(i),obj.tiempoingreso.get(i)});
         }
-         System.out.println("tarifa:"+obj1.tarifa.get(1)+" es "+(obj1.tarifa.get(1)*12));
+     
     }
 
     /**

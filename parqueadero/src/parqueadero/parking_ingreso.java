@@ -16,8 +16,13 @@ public class parking_ingreso extends javax.swing.JFrame {
      */
     vehiculo obj= new vehiculo();
     objetoparqueadero obj1= new objetoparqueadero();
+    
     public parking_ingreso() {
-        initComponents();
+        initComponents(); 
+        
+        jLabel1.setText((obj1.maximacapacidadcarro)+" Carros");
+        jLabel2.setText((obj1.maximacapacidadmotos)+" Motos");
+        jLabel3.setText((obj1.maximacapacidadbicicletas)+" Bicicletas");
     }
 
     /**
@@ -34,13 +39,15 @@ public class parking_ingreso extends javax.swing.JFrame {
         jLabel_Tipo_Vehiculo = new javax.swing.JLabel();
         jLabel_placa = new javax.swing.JLabel();
         jLabel_Hora = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField_hora_ingreso = new javax.swing.JTextField();
         btn_ingresar = new javax.swing.JButton();
         btn_volver = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jTextField_min_ngreso = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,7 +90,7 @@ public class parking_ingreso extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(50, 50, 50))
         );
@@ -96,6 +103,8 @@ public class parking_ingreso extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(0, 13, Short.MAX_VALUE))
         );
+
+        jLabel4.setText(":");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,11 +122,17 @@ public class parking_ingreso extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField_placa, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_placa))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_Hora)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(37, 37, 37))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextField_hora_ingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_min_ngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel_Hora))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(20, 20, 20))
             .addGroup(layout.createSequentialGroup()
                 .addGap(76, 76, 76)
                 .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,7 +152,9 @@ public class parking_ingreso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox_tipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_placa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_hora_ingreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_min_ngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(27, 27, 27)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
@@ -158,11 +175,15 @@ public class parking_ingreso extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_volverActionPerformed
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
-       obj.vehiculo(jComboBox_tipoVehiculo.getSelectedItem().toString(),jTextField_placa.getText());
+       
+        obj.vehiculo(jComboBox_tipoVehiculo.getSelectedItem().toString(),jTextField_placa.getText());
        obj1.tarifa(jComboBox_tipoVehiculo.getSelectedItem().toString());
-       int contn ;
-      //contn= obj1.contador();
-       jLabel1.setText((obj1.contador())+" Carros");
+       obj1.contador(jComboBox_tipoVehiculo.getSelectedItem().toString());
+       obj.entrada(jTextField_hora_ingreso.getText(), jTextField_min_ngreso.getText());
+      
+      jLabel1.setText((obj1.maximacapacidadcarro)+" Carros");
+      jLabel2.setText((obj1.maximacapacidadmotos)+" Motos");
+      jLabel3.setText((obj1.maximacapacidadbicicletas)+" Bicicletas");
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
     /**
@@ -207,11 +228,13 @@ public class parking_ingreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel_Hora;
     private javax.swing.JLabel jLabel_Tipo_Vehiculo;
     private javax.swing.JLabel jLabel_placa;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField_hora_ingreso;
+    private javax.swing.JTextField jTextField_min_ngreso;
     private javax.swing.JTextField jTextField_placa;
     // End of variables declaration//GEN-END:variables
 }

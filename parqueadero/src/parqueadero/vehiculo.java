@@ -16,24 +16,24 @@ import javax.swing.JOptionPane;
 public class vehiculo
 {
  
- ArrayList<Date> tiempoingreso;
- ArrayList<Date> tiemposalida;
+ static ArrayList<String> tiempoingreso =new ArrayList<String>();
+ static ArrayList<String> tiemposalida =new ArrayList<String>();
  public static String tipovehiculo;
  public boolean vehiculoenparqueadero;
 
-vehiculo(String tipovehiculo,Date tiempoingreso,Date tiemposalida,Boolean vehiculoenparqueadero)
+vehiculo(String tipovehiculo,String tiempoingreso,String tiemposalida,Boolean vehiculoenparqueadero)
 {
     this.tipovehiculo= tipovehiculo;
     this.vehiculoenparqueadero= vehiculoenparqueadero;
-    this.tiempoingreso =new ArrayList<Date>();
-    this.tiemposalida =new ArrayList<Date>();
+    //this.tiempoingreso
+    //this.tiemposalida =new ArrayList<Integer>();
     
 }
 
     vehiculo() {
       
     }
-    //String nplaca,ntipo;
+    
     
 static ArrayList<String> listaVehiculos=  new ArrayList<String>();
  static     ArrayList<String> placa=  new ArrayList<String>();
@@ -67,28 +67,51 @@ public String vehiculo(String tipovehiculo, String nplaca)
         } 
         return tipovehiculo;
         
-}
-public void ff()
+}int hora_entrada=0;
+public int entrada(String hora,String min)
 {
-    for (int i = 0; i < placa.size(); i++) {
-          
-           // tabla.addRow(new Object[]{tipo.get(i),placa.get(i)});
-           System.out.println(listaVehiculos.get(i)+placa.get(i));
-        }
+    tiempoingreso.add(hora+":"+min);
+   
+   
+ hora_entrada=((Integer.parseInt(hora)*60)+Integer.parseInt(min));
+    System.out.println("hora: "+hora_entrada );
+    return hora_entrada;
 }
-
+int hora_salida=0;
+public int salida(String hora,String min)
+{
+    tiemposalida.add(hora+":"+min);
+   
+   
+ hora_salida=((Integer.parseInt(hora)*60)+Integer.parseInt(min));
+    System.out.println("hora: "+hora_salida );
+    return hora_salida;
+}
+public void calculo()
+{
+    System.out.println("total:" +(hora_entrada-hora_salida));
+}
 int indice;
 public int buscar(String buscar)
 {
-    
+   
    
      indice=placa.indexOf(buscar);
        
-        if (indice!=-1) {
+        if (indice>=0) {
             System.out.println("se encuentra en "+indice+"eeee"+listaVehiculos.get(indice)+"fff"+placa.get(indice));
+           // vehiculoenparqueadero=true;
             
+            return indice;
+        } 
+        else{
+            //vehiculoenparqueadero=false;
+            indice=-1;
+         return indice;  
         }
-        return indice;
+           
+           
+       
 }
 
 }
