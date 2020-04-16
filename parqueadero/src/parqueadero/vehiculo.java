@@ -18,6 +18,9 @@ public class vehiculo
  
  static ArrayList<String> tiempoingreso =new ArrayList<String>();
  static ArrayList<String> tiemposalida =new ArrayList<String>();
+ static ArrayList<Integer> tiempo =new ArrayList<Integer>();
+ static ArrayList<Integer> valor =new ArrayList<Integer>();
+ 
  public static String tipovehiculo;
  public boolean vehiculoenparqueadero;
 
@@ -42,7 +45,7 @@ static ArrayList<String> listaVehiculos=  new ArrayList<String>();
 public String vehiculo(String tipovehiculo, String nplaca)
 {
   // tipo_vehiculo =jComboBoxTIPO.getSelectedItem().toString();
-     
+    
         switch (tipovehiculo) {
           
             case "Carro":
@@ -65,31 +68,93 @@ public String vehiculo(String tipovehiculo, String nplaca)
             default:
                 break;
         } 
+     
         return tipovehiculo;
         
-}int hora_entrada=0;
+} static int hora_entrada=0;
+int posicion=(listaVehiculos.size());
+
 public int entrada(String hora,String min)
 {
+    hora_entrada=((Integer.parseInt(hora)*60)+Integer.parseInt(min));
+    //if (hora_entrada>=360  && hora_entrada<=1320  ) 
+       // {
     tiempoingreso.add(hora+":"+min);
    
    
- hora_entrada=((Integer.parseInt(hora)*60)+Integer.parseInt(min));
+ 
     System.out.println("hora: "+hora_entrada );
+     //}else   
+        //{
+           //  JOptionPane.showMessageDialog(null, "Fuera Del Horario De Funcionamiento");
+//      listaVehiculos.remove(posicion);
+               // placa.remove(posicion);
+//            tiempoingreso.remove(posicion);
+          //  hora_entrada=-1;
+        //}
     return hora_entrada;
 }
-int hora_salida=0;
+ static int hora_salida=0;
 public int salida(String hora,String min)
 {
+    hora_salida=((Integer.parseInt(hora)*60)+Integer.parseInt(min));
+    
+        
+    
+
+    if ( hora_salida<=1320 && hora_salida>=360  ) 
+        {
     tiemposalida.add(hora+":"+min);
    
    
- hora_salida=((Integer.parseInt(hora)*60)+Integer.parseInt(min));
+ 
     System.out.println("hora: "+hora_salida );
+    
+    }else   
+        {
+             JOptionPane.showMessageDialog(null, "Fuera Del Horario De Funcionamiento");
+           
+        }
+   
+    
+    
     return hora_salida;
 }
-public void calculo()
-{
-    System.out.println("total:" +(hora_entrada-hora_salida));
+ int num=0;
+public void calculo(int indice)
+{ 
+    
+   
+   
+     
+        if (hora_entrada>hora_salida) 
+        {
+            num=hora_entrada-hora_salida;
+             tiempo.add(indice, num);
+        }
+        else
+        {
+            num=hora_salida-hora_entrada;
+             tiempo.add(indice, num);
+        }
+       
+        
+       
+            if (num>=600) 
+            {
+                valor.add(indice, 13000);
+            }
+            
+            else
+            {
+             Integer ne=   objetoparqueadero.tarifa.get(indice);
+                valor.add(indice, ne*num);
+            }
+   
+            
+       
+        
+    System.out.println("total:" +(num));
 }
 int indice;
 public int buscar(String buscar)

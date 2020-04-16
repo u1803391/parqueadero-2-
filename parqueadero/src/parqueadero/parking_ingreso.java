@@ -175,15 +175,22 @@ public class parking_ingreso extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_volverActionPerformed
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
+        
        
-        obj.vehiculo(jComboBox_tipoVehiculo.getSelectedItem().toString(),jTextField_placa.getText());
-       obj1.tarifa(jComboBox_tipoVehiculo.getSelectedItem().toString());
+            
        obj1.contador(jComboBox_tipoVehiculo.getSelectedItem().toString());
+        obj.vehiculo(jComboBox_tipoVehiculo.getSelectedItem().toString(),jTextField_placa.getText());
        obj.entrada(jTextField_hora_ingreso.getText(), jTextField_min_ngreso.getText());
+       
+      
+      obj1.tarifa(jComboBox_tipoVehiculo.getSelectedItem().toString());
       
       jLabel1.setText((obj1.maximacapacidadcarro)+" Carros");
       jLabel2.setText((obj1.maximacapacidadmotos)+" Motos");
       jLabel3.setText((obj1.maximacapacidadbicicletas)+" Bicicletas");
+         
+      
+            
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
     /**

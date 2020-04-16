@@ -8,6 +8,7 @@ package parqueadero;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author crist
@@ -47,12 +48,16 @@ public class objetoparqueadero
                     JOptionPane.showMessageDialog(null, "Cupo LLeno, Carros");
                 } else if (maximacapacidadcarro<0) {
            
-                
                 vehiculo.listaVehiculos.remove(posicion);
                 vehiculo.placa.remove(posicion);
                 tarifa.remove(posicion);
+                vehiculo.tiempoingreso.remove(posicion);
+//                vehiculo.tiemposalida.remove(posicion);
+//                vehiculo.tiempo.remove(posicion);
+                
+                
                 maximacapacidadcarro++;
-                JOptionPane.showMessageDialog(null, "Cupo LLeno, Bicicletas");
+                JOptionPane.showMessageDialog(null, "Cupo LLeno, Carros");
                 }
                 break;
             case "Moto":
@@ -70,22 +75,44 @@ public class objetoparqueadero
         }
     
  }
-
+vehiculo obj= new vehiculo();
  static     ArrayList<Integer> tarifa=  new ArrayList<Integer>();
   public void tarifa(String tipo)
     {
         
         switch (tipo) {
             case "Carro":
+                
+                if (obj.hora_entrada>=1080) 
+                {
+                tarifa.add(80);
+                 }
+                else
+                {
                 tarifa.add(75);
+                }
                 // System.out.println("tarifa "+ tarifa);
                 break;
             case "Moto":
+                if (obj.hora_entrada>=1080) 
+                {
+                tarifa.add(25);
+                 }
+                else
+                {
                 tarifa.add(20);
+                }
                 // System.out.println("tarifa "+ tarifa);
                 break;
             case "Bicicleta":
+                if (obj.hora_entrada>=1080) 
+                {
+                tarifa.add(15);
+                 }
+                else
+                {
                 tarifa.add(10);
+                }
                 //System.out.println("tarifa "+ tarifa);
                 break;
             default:

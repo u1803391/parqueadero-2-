@@ -152,19 +152,12 @@ public class parking_salida extends javax.swing.JFrame {
         }
         else{
             
-            obj.entrada(jTextField_horaSalida.getText(), jTextField_minsalida.getText());
-            tabla.addRow(new Object[]{obj.listaVehiculos.get(i),obj.placa.get(i),"",obj1.tarifa.get(i)});
-            obj1.salida(i);
-            obj.calculo();
-        }
-        
-      /*  int indice;
-     indice=obj.placa.indexOf(jTextField_buscar.getText());
-     
-        if (indice!=-1) {
-            System.out.println("se encuentra en "+indice+"eeee"+obj.listaVehiculos.get(indice)+"fff"+obj.placa.get(indice));
+            obj.salida(jTextField_horaSalida.getText(), jTextField_minsalida.getText());
             
-        }tabla.addRow(new Object[]{obj.listaVehiculos.get(indice),obj.placa.get(indice)});*/
+            //obj1.salida(i);
+            obj.calculo(i);
+            tabla.addRow(new Object[]{obj.listaVehiculos.get(i),obj.placa.get(i),obj.tiempo.get(i),obj1.tarifa.get(i),obj.tiempoingreso.get(i),obj.tiemposalida.get(i),obj.valor.get(i)});
+        }
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
